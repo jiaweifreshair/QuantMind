@@ -1,0 +1,270 @@
+{
+  "upstream": {
+    "url": "https://github.com/qusong0627/QuantMind",
+    "sha": "1ba0b4d818ab8aa4910b3439f3842a5ba86a0247",
+    "branch": "master",
+    "version_pyproject": "1.0.0",
+    "license": "AGPL-3.0-only",
+    "license_sha256": "6f1e622c82a380075843bb084a7ec3b1f1d12a4a02526d75e78b0924a860aa75",
+    "github_releases": []
+  },
+  "target": {
+    "url": "https://github.com/jiaweifreshair/QuantMind",
+    "preexisting": "README.md only, commit 1937c0623a4208d049c34e67815ecefb5653b715"
+  },
+  "disabled": [
+    "deploy/full-deploy.sh",
+    "sudo",
+    "broker",
+    "QMT",
+    "tongdaxin order",
+    "simulation matching",
+    "new cron",
+    "LLM report"
+  ],
+  "commands": [
+    {
+      "purpose": "verify upstream",
+      "cmd": "git -C /tmp/quantmind-upstream rev-parse HEAD"
+    },
+    {
+      "cmd": [
+        "/usr/bin/python3",
+        "scripts/stock_9layer_fetch.py",
+        "002415.SZ"
+      ],
+      "cwd": "/tmp/quantmind-upstream",
+      "returncode": 0,
+      "stdout": "[info] QuantDB 根: /tmp/quantmind-upstream/data/quantdb\n[info] L1+L2 最新分区: None\n\n====================================================================\n## L3 行情\n====================================================================\n[缺失] daily_forward 无该标的行——用 valuation 收盘价代理（见估值节）\n\n====================================================================\n## L2 财务三表\n====================================================================\n<字段说明：单位=元，m_timetag=YYYYMMDD 季频>\n-- income: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- cashflow: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- balance: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- pershare_index: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- 股东户数: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- 分红: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n\n====================================================================\n## L1 估值（3年截面分位）\n====================================================================\n  [缺失] valuation 无数据\n\n====================================================================\n## L4 两融\n====================================================================\n[缺失] margin_trading 无该标的\n[error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'\n",
+      "stderr": "",
+      "seconds": 0.266
+    },
+    {
+      "cmd": [
+        "/usr/bin/python3",
+        "-c",
+        "import qlib"
+      ],
+      "cwd": null,
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'qlib'\n",
+      "seconds": 0.009
+    },
+    {
+      "purpose": "research runner",
+      "cmd": "PYTHONPATH=/tmp/qm-py:/tmp/quantmind-upstream TZ=Asia/Shanghai python3 research/run_readonly_research.py"
+    }
+  ],
+  "inputs": [
+    {
+      "symbol": "002415.SZ",
+      "expect": "海康威视",
+      "market": "A",
+      "ccy": "CNY",
+      "priority": true
+    },
+    {
+      "symbol": "09988.HK",
+      "expect": "阿里",
+      "market": "HK",
+      "ccy": "HKD",
+      "priority": true
+    },
+    {
+      "symbol": "002230.SZ",
+      "expect": "科大讯飞",
+      "market": "A",
+      "ccy": "CNY",
+      "priority": false
+    },
+    {
+      "symbol": "09660.HK",
+      "expect": "地平线",
+      "market": "HK",
+      "ccy": "HKD",
+      "priority": false
+    },
+    {
+      "symbol": "01810.HK",
+      "expect": "小米",
+      "market": "HK",
+      "ccy": "HKD",
+      "priority": false
+    },
+    {
+      "symbol": "000591.SZ",
+      "expect": "太阳能",
+      "market": "A",
+      "ccy": "CNY",
+      "priority": false
+    },
+    {
+      "symbol": "600276.SH",
+      "expect": "恒瑞",
+      "market": "A",
+      "ccy": "CNY",
+      "priority": false
+    },
+    {
+      "symbol": "00981.HK",
+      "expect": "中芯",
+      "market": "HK",
+      "ccy": "HKD",
+      "priority": false
+    },
+    {
+      "symbol": "601899.SH",
+      "expect": "紫金",
+      "market": "A",
+      "ccy": "CNY",
+      "priority": false
+    }
+  ],
+  "modules": [
+    {
+      "module": "deploy/full-deploy.sh",
+      "result": "未执行",
+      "detail": "审阅到 curl|sudo bash，按约束不运行"
+    },
+    {
+      "module": "scripts/setup/init.sh",
+      "result": "未执行",
+      "detail": "依赖容器内路径与数据库，不在本次只读范围"
+    },
+    {
+      "module": "backend/main_oss.py",
+      "result": "未执行",
+      "detail": "会拉起 API/Engine/Trade/Stream"
+    },
+    {
+      "module": "券商 / QMT / 通达信下单 / 模拟撮合",
+      "result": "未执行",
+      "detail": "本次明确禁用"
+    },
+    {
+      "module": "QuantBot / 原生 LLM 研报",
+      "result": "未运行",
+      "detail": "未配置 OPENAI_API_KEY, ANTHROPIC_API_KEY, DASHSCOPE_API_KEY, QWEN_API_KEY, QUANTDB_API_KEY, QUANTMIND_LLM_API_KEY"
+    },
+    {
+      "module": "Qlib 回测",
+      "result": "未安装/不可导入",
+      "detail": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'qlib'\n"
+    },
+    {
+      "module": "scripts/stock_9layer_fetch.py",
+      "result": "失败",
+      "detail": "优先标的 002415.SZ 直接运行。本机没有 QuantDB parquet。management tool to install the fastparquet package.  ==================================================================== ## L1 估值（3年截面分位） ====================================================================   [缺失] valuation 无数据  ==================================================================== ## L4 两融 ==================================================================== [缺失] margin_trading 无该标的 [error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'  "
+    },
+    {
+      "module": "QuantDB / 付费港股 CSV",
+      "result": "缺失",
+      "detail": "仓库与本机都没有 data/quantdb 或 data/quanthk/_paid_raw"
+    },
+    {
+      "module": "A股 AkShareProvider / EastMoneyProvider",
+      "result": "未取得日线",
+      "detail": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。"
+    },
+    {
+      "module": "A股 BaostockAdapter.fetch_daily / fetch_meta",
+      "result": "5/5 只完成区间计算",
+      "detail": "匿名登录后的历史日线与证券简称，前复权与不复权各一次"
+    },
+    {
+      "module": "港股 akshare_kline._fetch_stock + 公司资料/分红",
+      "result": "3/4 只完成区间计算",
+      "detail": "不复权；未跑复权因子脚本"
+    }
+  ],
+  "symbol_status": {
+    "002415.SZ": "calculated",
+    "09988.HK": "calculated",
+    "002230.SZ": "calculated",
+    "09660.HK": "stopped_ohlc",
+    "01810.HK": "calculated",
+    "000591.SZ": "calculated",
+    "600276.SH": "calculated",
+    "00981.HK": "calculated",
+    "601899.SH": "calculated"
+  },
+  "started_note": "2026-11-24T21:49:59+08:00",
+  "elapsed_seconds": 166.103,
+  "packages": {
+    "akshare": "1.20.45",
+    "baostock": "00.9.40",
+    "pandas": "3.1.1"
+  },
+  "artifacts": {
+    "research/output/results.json": {
+      "sha256": "569b5c8ad4d80a9b8778793912726a10a3226970e2f6243946b7e80fdbe9c1db",
+      "bytes": 86793
+    },
+    "research/output/analysis.html": {
+      "sha256": "f9e2fbe15d636c434ac0cb8256fb336ccacfc0ef05740d6c90f0bef1820a412e",
+      "bytes": 34203
+    },
+    "research/output/bars/000591.SZ_BaostockAdapter.fetch_daily_none.csv": {
+      "sha256": "244baed583c9336316c68bbb8e7d5667267c8dd815ef03d635ed18cef57635c4",
+      "bytes": 38083
+    },
+    "research/output/bars/000591.SZ_BaostockAdapter.fetch_daily_qfq.csv": {
+      "sha256": "54d1cd6ee97887d3ffbe72364517ab7cbbcebb883192298dfc6066014a8194e9",
+      "bytes": 52251
+    },
+    "research/output/bars/002230.SZ_BaostockAdapter.fetch_daily_none.csv": {
+      "sha256": "91a6fe7aaffe84a00c3bef760dd8afb62446c9439d0cef44ed05f3f880d23283",
+      "bytes": 41243
+    },
+    "research/output/bars/002230.SZ_BaostockAdapter.fetch_daily_qfq.csv": {
+      "sha256": "ce3e83ba7dca33cdbf55c699a5e01daf4a3000c3dcdb832d98363a31b640f53a",
+      "bytes": 55248
+    },
+    "research/output/bars/002415.SZ_BaostockAdapter.fetch_daily_none.csv": {
+      "sha256": "4db11dad6486edd0111d7dd90bd579fa2c3c69b21c8beedd278d16cf40d235d9",
+      "bytes": 41291
+    },
+    "research/output/bars/002415.SZ_BaostockAdapter.fetch_daily_qfq.csv": {
+      "sha256": "3f902b3629cd23f6b80515171c01138a7c26b527434bb2c74dc3a46ede9e4c7d",
+      "bytes": 56141
+    },
+    "research/output/bars/00981.HK_akshare_kline._fetch_stock_none.csv": {
+      "sha256": "c37129bc493f9d2d0342b175f053df235db3ba7b2131acfa38b6c048c4a9e7a1",
+      "bytes": 40844
+    },
+    "research/output/bars/01810.HK_akshare_kline._fetch_stock_none.csv": {
+      "sha256": "6200cac2e42febf2c947f62e2c345075cd1f2a6fb9716c2f966dba6f1b83b62a",
+      "bytes": 41631
+    },
+    "research/output/bars/09660.HK_akshare_kline._fetch_stock_none.csv": {
+      "sha256": "507aaae9d67223c33d91e94a69f87e1b622bdd7fc0e1996e84c737a8aad23666",
+      "bytes": 28134
+    },
+    "research/output/bars/09988.HK_akshare_kline._fetch_stock_none.csv": {
+      "sha256": "b05cd275b6565edbb12dc3431915f3ee09215ad2d27471c0c5fd1f8843601188",
+      "bytes": 42226
+    },
+    "research/output/bars/600276.SH_BaostockAdapter.fetch_daily_none.csv": {
+      "sha256": "b411eb6aed6f9a89aa1cedd8cbb002f8419c7d7ea99ca3a1def3166e42b4582c",
+      "bytes": 41284
+    },
+    "research/output/bars/600276.SH_BaostockAdapter.fetch_daily_qfq.csv": {
+      "sha256": "3036e4eaecd3ae1f97d3aa39cf9dbae33398f2e500258b7065518ad09342dfd2",
+      "bytes": 54346
+    },
+    "research/output/bars/601899.SH_BaostockAdapter.fetch_daily_none.csv": {
+      "sha256": "314d3131a263c1e5d7c57808af1ae49c4825c0ced0ad582f65fd3f1560376e37",
+      "bytes": 42229
+    },
+    "research/output/bars/601899.SH_BaostockAdapter.fetch_daily_qfq.csv": {
+      "sha256": "11041da62a067bd99f630296b62d6dca3e8c5491b3cd03d198d3f82f95c6fd04",
+      "bytes": 56922
+    },
+    "research/output/run_manifest.json": {
+      "sha256": "1e863bc1a908ea46340fd27bd4d362effd8942f7633f198a8445717a89d1b3dc",
+      "bytes": 13369
+    }
+  },
+  "identity_parser_fix": "公司名称优先；英文名称只作并列事实"
+}
