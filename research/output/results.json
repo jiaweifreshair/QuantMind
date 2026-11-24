@@ -1,0 +1,2257 @@
+{
+  "run": {
+    "fetched_at": "2026-11-24T21:49:59+08:00",
+    "timezone": "Asia/Shanghai",
+    "upstream_url": "https://github.com/qusong0627/QuantMind",
+    "upstream_sha": "1ba0b4d818ab8aa4910b3439f3842a5ba86a0247",
+    "version": "1.0.0",
+    "license": "AGPL-3.0",
+    "license_sha256": "6f1e622c82a380075843bb084a7ec3b1f1d12a4a02526d75e78b0924a860aa75",
+    "releases": [],
+    "target_repo": "https://github.com/jiaweifreshair/QuantMind",
+    "target_was_empty_except_readme": true,
+    "platform_fully_ran": false,
+    "trading_disabled": true,
+    "python": "3.12.3",
+    "platform": "Linux-6.12.113+-x86_64-with-glibc2.39",
+    "packages": {
+      "akshare": "1.20.45",
+      "baostock": "00.9.40",
+      "pandas": "3.1.1"
+    },
+    "seconds": 166.103,
+    "identity_parser": "公司名称优先；英文名称只作并列事实"
+  },
+  "probes": {
+    "nine": {
+      "result": "失败",
+      "detail": "优先标的 002415.SZ 直接运行。本机没有 QuantDB parquet。management tool to install the fastparquet package.  ==================================================================== ## L1 估值（3年截面分位） ====================================================================   [缺失] valuation 无数据  ==================================================================== ## L4 两融 ==================================================================== [缺失] margin_trading 无该标的 [error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'  ",
+      "command": {
+        "cmd": [
+          "/usr/bin/python3",
+          "scripts/stock_9layer_fetch.py",
+          "002415.SZ"
+        ],
+        "cwd": "/tmp/quantmind-upstream",
+        "returncode": 0,
+        "stdout": "[info] QuantDB 根: /tmp/quantmind-upstream/data/quantdb\n[info] L1+L2 最新分区: None\n\n====================================================================\n## L3 行情\n====================================================================\n[缺失] daily_forward 无该标的行——用 valuation 收盘价代理（见估值节）\n\n====================================================================\n## L2 财务三表\n====================================================================\n<字段说明：单位=元，m_timetag=YYYYMMDD 季频>\n-- income: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- cashflow: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- balance: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- pershare_index: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- 股东户数: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n-- 分红: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.\nA suitable version of pyarrow or fastparquet is required for parquet support.\nTrying to import the above resulted in these errors:\n - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip, conda, or your preferred package management tool to install the pyarrow package.\n - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip, conda, or your preferred package management tool to install the fastparquet package.\n\n====================================================================\n## L1 估值（3年截面分位）\n====================================================================\n  [缺失] valuation 无数据\n\n====================================================================\n## L4 两融\n====================================================================\n[缺失] margin_trading 无该标的\n[error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'\n",
+        "stderr": "",
+        "seconds": 0.266
+      }
+    },
+    "qlib": {
+      "result": "未安装/不可导入",
+      "detail": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'qlib'\n",
+      "command": {
+        "cmd": [
+          "/usr/bin/python3",
+          "-c",
+          "import qlib"
+        ],
+        "cwd": null,
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'qlib'\n",
+        "seconds": 0.009
+      }
+    },
+    "llm": {
+      "detail": "未配置 OPENAI_API_KEY, ANTHROPIC_API_KEY, DASHSCOPE_API_KEY, QWEN_API_KEY, QUANTDB_API_KEY, QUANTMIND_LLM_API_KEY"
+    },
+    "push2": {
+      "result": "限流后停止",
+      "detail": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。"
+    }
+  },
+  "modules": [
+    {
+      "module": "deploy/full-deploy.sh",
+      "result": "未执行",
+      "detail": "审阅到 curl|sudo bash，按约束不运行"
+    },
+    {
+      "module": "scripts/setup/init.sh",
+      "result": "未执行",
+      "detail": "依赖容器内路径与数据库，不在本次只读范围"
+    },
+    {
+      "module": "backend/main_oss.py",
+      "result": "未执行",
+      "detail": "会拉起 API/Engine/Trade/Stream"
+    },
+    {
+      "module": "券商 / QMT / 通达信下单 / 模拟撮合",
+      "result": "未执行",
+      "detail": "本次明确禁用"
+    },
+    {
+      "module": "QuantBot / 原生 LLM 研报",
+      "result": "未运行",
+      "detail": "未配置 OPENAI_API_KEY, ANTHROPIC_API_KEY, DASHSCOPE_API_KEY, QWEN_API_KEY, QUANTDB_API_KEY, QUANTMIND_LLM_API_KEY"
+    },
+    {
+      "module": "Qlib 回测",
+      "result": "未安装/不可导入",
+      "detail": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'qlib'\n"
+    },
+    {
+      "module": "scripts/stock_9layer_fetch.py",
+      "result": "失败",
+      "detail": "优先标的 002415.SZ 直接运行。本机没有 QuantDB parquet。management tool to install the fastparquet package.  ==================================================================== ## L1 估值（3年截面分位） ====================================================================   [缺失] valuation 无数据  ==================================================================== ## L4 两融 ==================================================================== [缺失] margin_trading 无该标的 [error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not 'NoneType'  "
+    },
+    {
+      "module": "QuantDB / 付费港股 CSV",
+      "result": "缺失",
+      "detail": "仓库与本机都没有 data/quantdb 或 data/quanthk/_paid_raw"
+    },
+    {
+      "module": "A股 AkShareProvider / EastMoneyProvider",
+      "result": "未取得日线",
+      "detail": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。"
+    },
+    {
+      "module": "A股 BaostockAdapter.fetch_daily / fetch_meta",
+      "result": "5/5 只完成区间计算",
+      "detail": "匿名登录后的历史日线与证券简称，前复权与不复权各一次"
+    },
+    {
+      "module": "港股 akshare_kline._fetch_stock + 公司资料/分红",
+      "result": "3/4 只完成区间计算",
+      "detail": "不复权；未跑复权因子脚本"
+    }
+  ],
+  "symbols": [
+    {
+      "symbol": "002415.SZ",
+      "market": "A",
+      "currency": "CNY",
+      "priority": true,
+      "code_check": {
+        "ok": true,
+        "detail": "后缀与代码段一致"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "海康威视",
+        "observed_name": "海康威视",
+        "name_ok": true,
+        "source": "BaostockAdapter.fetch_meta",
+        "f10_ok": false,
+        "f10_error": "未调用。AkShare F10 走东方财富，同一次准备中已出现 push2 限流。"
+      },
+      "layers": {
+        "akshare_provider_qfq": {
+          "ok": false,
+          "error": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。",
+          "seconds": 0,
+          "series": null
+        },
+        "eastmoney_provider_qfq": {
+          "ok": false,
+          "error": "与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。",
+          "seconds": 0,
+          "series": null
+        },
+        "baostock_adapter_qfq": {
+          "ok": true,
+          "error": null,
+          "seconds": 13.725,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "qfq",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 35.3,
+              "high": 35.45,
+              "low": 34.61,
+              "close": 34.85,
+              "volume": 53357935.0,
+              "amount": 1863143793.81
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 35.28,
+                "high": 35.59,
+                "low": 35.08,
+                "close": 35.29,
+                "volume": 39329843.0,
+                "amount": 1390127382.69
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 35.2,
+                "high": 35.8,
+                "low": 35.12,
+                "close": 35.71,
+                "volume": 59714068.0,
+                "amount": 2123891996.31
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 35.33,
+                "high": 35.6,
+                "low": 34.97,
+                "close": 35.25,
+                "volume": 49298489.0,
+                "amount": 1738858337.26
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 34.85,
+                "high": 35.28,
+                "low": 34.48,
+                "close": 35.15,
+                "volume": 46405296.0,
+                "amount": 1618063088.79
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 35.3,
+                "high": 35.45,
+                "low": 34.61,
+                "close": 34.85,
+                "volume": 53357935.0,
+                "amount": 1863143793.81
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 34.25,
+                "end_close": 34.85,
+                "close_to_close_return": 0.017518,
+                "max_drawdown_close": -0.049116,
+                "realized_vol_ann": 0.195718,
+                "window_high": 35.8,
+                "window_low": 33.73,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 34.15,
+                "end_close": 34.85,
+                "close_to_close_return": 0.020498,
+                "max_drawdown_close": -0.106069,
+                "realized_vol_ann": 0.224753,
+                "window_high": 36.18,
+                "window_low": 31.85,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 30.0822,
+                "end_close": 34.85,
+                "close_to_close_return": 0.158491,
+                "max_drawdown_close": -0.155579,
+                "realized_vol_ann": 0.307156,
+                "window_high": 38.5675,
+                "window_low": 29.2947,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/002415.SZ_BaostockAdapter.fetch_daily_qfq.csv"
+          }
+        },
+        "baostock_adapter_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 2.158,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "none",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 35.3,
+              "high": 35.45,
+              "low": 34.61,
+              "close": 34.85,
+              "volume": 53357935.0,
+              "amount": 1863143793.81
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 35.28,
+                "high": 35.59,
+                "low": 35.08,
+                "close": 35.29,
+                "volume": 39329843.0,
+                "amount": 1390127382.69
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 35.2,
+                "high": 35.8,
+                "low": 35.12,
+                "close": 35.71,
+                "volume": 59714068.0,
+                "amount": 2123891996.31
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 35.33,
+                "high": 35.6,
+                "low": 34.97,
+                "close": 35.25,
+                "volume": 49298489.0,
+                "amount": 1738858337.26
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 34.85,
+                "high": 35.28,
+                "low": 34.48,
+                "close": 35.15,
+                "volume": 46405296.0,
+                "amount": 1618063088.79
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 35.3,
+                "high": 35.45,
+                "low": 34.61,
+                "close": 34.85,
+                "volume": 53357935.0,
+                "amount": 1863143793.81
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 34.25,
+                "end_close": 34.85,
+                "close_to_close_return": 0.017518,
+                "max_drawdown_close": -0.049116,
+                "realized_vol_ann": 0.195718,
+                "window_high": 35.8,
+                "window_low": 33.73,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 34.15,
+                "end_close": 34.85,
+                "close_to_close_return": 0.020498,
+                "max_drawdown_close": -0.106069,
+                "realized_vol_ann": 0.224753,
+                "window_high": 36.18,
+                "window_low": 31.85,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 30.56,
+                "end_close": 34.85,
+                "close_to_close_return": 0.14038,
+                "max_drawdown_close": -0.168781,
+                "realized_vol_ann": 0.310342,
+                "window_high": 39.18,
+                "window_low": 29.76,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/002415.SZ_BaostockAdapter.fetch_daily_none.csv"
+          }
+        }
+      },
+      "primary_layer": "baostock_adapter_qfq",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [
+          {
+            "left": "baostock_adapter_qfq",
+            "right": "baostock_adapter_none",
+            "date": "2026-11-24",
+            "left_close": 34.85,
+            "right_close": 34.85,
+            "rel_diff": 0.0,
+            "over_1pct": false
+          }
+        ],
+        "material_mismatch": false,
+        "notes": []
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率"
+    },
+    {
+      "symbol": "09988.HK",
+      "market": "HK",
+      "currency": "HKD",
+      "priority": true,
+      "code_check": {
+        "ok": true,
+        "detail": "港股使用 5 位代码加 .HK"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "阿里",
+        "observed_name": "阿里巴巴集团控股有限公司",
+        "name_ok": true,
+        "profile_ok": true,
+        "profile_error": null,
+        "profile_seconds": 0.753,
+        "profile_preview": [
+          {
+            "公司名称": "阿里巴巴集团控股有限公司",
+            "英文名称": "Alibaba Group Holding Limited",
+            "注册地": "Cayman Islands 开曼群岛（英属）",
+            "注册地址": "Fourth Floor, One Capital Place, P.O. Box 847, George Town, Grand Cayman, Cayman Islands",
+            "公司成立日期": "1999-06-28",
+            "所属行业": "专业零售",
+            "董事长": "蔡崇信",
+            "公司秘书": "张锦玮",
+            "员工人数": 131462,
+            "办公地址": "香港铜锣湾勿地臣街1号时代广场1座26楼,中国浙江省杭州市余杭区文一西路 960-1号",
+            "公司网址": "www.alibabagroup.com",
+            "E-MAIL": null,
+            "年结日": "03-31",
+            "联系电话": "+852 3018-6771,+65 6713-5090,+1 (845) 675-0437,+86 (571) 8502-2088",
+            "核数师": "罗兵咸永道会计师事务所",
+            "传真": "+86 (571) 8526-9066",
+            "公司介绍": "    阿里巴巴集团控股有限公司创立于1999年,旨在助力企业,帮助其变革营销、销售和经营的方式,提升其效率。公司为商家、品牌、零售商及其他企业提供技术设施以及营销平台,帮助其借助新技术的力量与用户和客户互动,并更高效地经营。公司还为企业提供领先的云设施和服务,以及更强的工作协作能力,促进其数字化转型并支持其业务增长。公司的业务包括中国商业、国际商业、本地生活服务、菜鸟、云、数字媒体及娱乐以及创新业务及其他。围绕着公司的平台与业务,一个涵盖了消费者、商家、品牌、零售商、第三方服务提供者、战略合作伙伴及其他企业的生态体系已经形成。2022财年,阿里巴巴生态体系的商品交易额(GMV)为人民币8.317万亿元,包括公司面向中国消费者的业务产生的GMV,以及国际商业零售业务产生的GMV。在2022财年,阿里巴巴生态体系通过面向全球消费者的业务服务的年度活跃消费者约为13.1亿,其中超过10亿消费者来自中国,3.05亿消费者来自海外。此外,公司通过云业务为数百万企业提供服务。",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          }
+        ],
+        "normalized_symbol": null,
+        "note": "akshare_kline._to_symbol 会把 5 位代码去掉一个前导 0，例如 09988 → 9988.HK。本次请求仍使用用户给出的 5 位代码。",
+        "english_name": "Alibaba Group Holding Limited"
+      },
+      "dividend": {
+        "ok": true,
+        "error": null,
+        "seconds": 0.439,
+        "ex_dates": [
+          "2026-06-10",
+          "2025-06-11",
+          "2025-06-11",
+          "2024-06-12",
+          "2024-06-12",
+          "2023-12-20"
+        ],
+        "preview": [
+          {
+            "announce_date": "2026-05-13",
+            "fiscal_year": "2026",
+            "plan": "每股派美元0.13125元(相当于港币1.027545元(计算值))",
+            "dist_type": "年度分配",
+            "ex_date": "2026-06-10",
+            "book_close": null,
+            "pay_date": "2026-07-06",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          },
+          {
+            "announce_date": "2025-05-15",
+            "fiscal_year": "2025",
+            "plan": "每股派美元0.13125元(相当于港币1.024319元(计算值))",
+            "dist_type": "年度分配",
+            "ex_date": "2025-06-11",
+            "book_close": null,
+            "pay_date": "2025-07-03",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          },
+          {
+            "announce_date": "2025-05-15",
+            "fiscal_year": "2025",
+            "plan": "每股派美元0.11875元(相当于港币0.926765元(计算值))",
+            "dist_type": "特别分配",
+            "ex_date": "2025-06-11",
+            "book_close": null,
+            "pay_date": "2025-07-03",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          },
+          {
+            "announce_date": "2024-05-14",
+            "fiscal_year": "2024",
+            "plan": "每股派美元0.125元(相当于港币0.97641元(计算值))",
+            "dist_type": "年度分配",
+            "ex_date": "2024-06-12",
+            "book_close": null,
+            "pay_date": "2024-07-03",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          },
+          {
+            "announce_date": "2024-05-14",
+            "fiscal_year": "2024",
+            "plan": "每股派美元0.0825元(相当于港币0.644431元(计算值))",
+            "dist_type": "特别分配",
+            "ex_date": "2024-06-12",
+            "book_close": null,
+            "pay_date": "2024-07-03",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          },
+          {
+            "announce_date": "2023-11-16",
+            "fiscal_year": "2023",
+            "plan": "每股派美元0.125元(相当于港币0.975932元(计算值))",
+            "dist_type": "年度分配",
+            "ex_date": "2023-12-20",
+            "book_close": null,
+            "pay_date": "2024-01-11",
+            "symbol": "9988.HK",
+            "source": "akshare"
+          }
+        ]
+      },
+      "layers": {
+        "akshare_kline_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 1.331,
+          "series": {
+            "source": "akshare_kline._fetch_stock",
+            "adjust": "none",
+            "rows": 712,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-23",
+            "last_bar": {
+              "trade_date": "2026-11-23",
+              "open": 80.85,
+              "high": 83.75,
+              "low": 79.5,
+              "close": 83.05,
+              "volume": 139222187.0,
+              "amount": 11398794694.0
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-17",
+                "open": 87.2,
+                "high": 88.2,
+                "low": 85.1,
+                "close": 85.45,
+                "volume": 173850688.0,
+                "amount": 14939719788.0
+              },
+              {
+                "trade_date": "2026-11-18",
+                "open": 85.5,
+                "high": 86.0,
+                "low": 84.25,
+                "close": 85.25,
+                "volume": 91692021.0,
+                "amount": 7799624421.0
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 82.25,
+                "high": 82.5,
+                "low": 80.2,
+                "close": 80.55,
+                "volume": 150956784.0,
+                "amount": 12198610864.0
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 81.3,
+                "high": 84.2,
+                "low": 80.95,
+                "close": 83.35,
+                "volume": 146982180.0,
+                "amount": 12188087457.0
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 80.85,
+                "high": 83.75,
+                "low": 79.5,
+                "close": 83.05,
+                "volume": 139222187.0,
+                "amount": 11398794694.0
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-26",
+                "end_date": "2026-11-23",
+                "start_close": 97.95,
+                "end_close": 83.05,
+                "close_to_close_return": -0.152118,
+                "max_drawdown_close": -0.261687,
+                "realized_vol_ann": 0.555385,
+                "window_high": 109.4,
+                "window_low": 79.5,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-27",
+                "end_date": "2026-11-23",
+                "start_close": 115.5,
+                "end_close": 83.05,
+                "close_to_close_return": -0.280952,
+                "max_drawdown_close": -0.302597,
+                "realized_vol_ann": 0.427146,
+                "window_high": 118.3,
+                "window_low": 79.5,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-06-02",
+                "end_date": "2026-11-23",
+                "start_close": 130.9,
+                "end_close": 83.05,
+                "close_to_close_return": -0.365546,
+                "max_drawdown_close": -0.384645,
+                "realized_vol_ann": 0.470915,
+                "window_high": 131.2,
+                "window_low": 79.5,
+                "label": "计算",
+                "dividend_in_window": true
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "adjustment_note": "该函数调用 ak.stock_hk_daily，上游注释标明不复权。后复权脚本依赖付费 CSV，本次没有运行。",
+            "bars_csv": "research/output/bars/09988.HK_akshare_kline._fetch_stock_none.csv"
+          }
+        }
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。",
+      "primary_layer": "akshare_kline_none",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [],
+        "material_mismatch": false,
+        "notes": [
+          "港股本次只有不复权一条原生日线，没有第二来源交叉。"
+        ]
+      }
+    },
+    {
+      "symbol": "002230.SZ",
+      "market": "A",
+      "currency": "CNY",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "后缀与代码段一致"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "科大讯飞",
+        "observed_name": "科大讯飞",
+        "name_ok": true,
+        "source": "BaostockAdapter.fetch_meta",
+        "f10_ok": false,
+        "f10_error": "未调用。AkShare F10 走东方财富，同一次准备中已出现 push2 限流。"
+      },
+      "layers": {
+        "akshare_provider_qfq": {
+          "ok": false,
+          "error": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。",
+          "seconds": 0,
+          "series": null
+        },
+        "eastmoney_provider_qfq": {
+          "ok": false,
+          "error": "与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。",
+          "seconds": 0,
+          "series": null
+        },
+        "baostock_adapter_qfq": {
+          "ok": true,
+          "error": null,
+          "seconds": 5.303,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "qfq",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 35.93,
+              "high": 36.22,
+              "low": 35.39,
+              "close": 35.46,
+              "volume": 21227332.0,
+              "amount": 760419234.64
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 36.57,
+                "high": 36.74,
+                "low": 36.0,
+                "close": 36.34,
+                "volume": 14545336.0,
+                "amount": 528299711.85
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 36.2,
+                "high": 36.43,
+                "low": 35.4,
+                "close": 35.9,
+                "volume": 21794971.0,
+                "amount": 778649376.25
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 35.38,
+                "high": 35.48,
+                "low": 34.38,
+                "close": 34.5,
+                "volume": 24988192.0,
+                "amount": 868274923.73
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 34.06,
+                "high": 35.56,
+                "low": 33.8,
+                "close": 35.49,
+                "volume": 24362069.0,
+                "amount": 843901790.37
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 35.93,
+                "high": 36.22,
+                "low": 35.39,
+                "close": 35.46,
+                "volume": 21227332.0,
+                "amount": 760419234.64
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 38.19,
+                "end_close": 35.46,
+                "close_to_close_return": -0.071485,
+                "max_drawdown_close": -0.118774,
+                "realized_vol_ann": 0.311912,
+                "window_high": 39.5,
+                "window_low": 33.8,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 38.93,
+                "end_close": 35.46,
+                "close_to_close_return": -0.089134,
+                "max_drawdown_close": -0.143921,
+                "realized_vol_ann": 0.243849,
+                "window_high": 40.81,
+                "window_low": 33.8,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 47.7891,
+                "end_close": 35.46,
+                "close_to_close_return": -0.25799,
+                "max_drawdown_close": -0.296295,
+                "realized_vol_ann": 0.309354,
+                "window_high": 50.3332,
+                "window_low": 33.8,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/002230.SZ_BaostockAdapter.fetch_daily_qfq.csv"
+          }
+        },
+        "baostock_adapter_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 1.945,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "none",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 35.93,
+              "high": 36.22,
+              "low": 35.39,
+              "close": 35.46,
+              "volume": 21227332.0,
+              "amount": 760419234.64
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 36.57,
+                "high": 36.74,
+                "low": 36.0,
+                "close": 36.34,
+                "volume": 14545336.0,
+                "amount": 528299711.85
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 36.2,
+                "high": 36.43,
+                "low": 35.4,
+                "close": 35.9,
+                "volume": 21794971.0,
+                "amount": 778649376.25
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 35.38,
+                "high": 35.48,
+                "low": 34.38,
+                "close": 34.5,
+                "volume": 24988192.0,
+                "amount": 868274923.73
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 34.06,
+                "high": 35.56,
+                "low": 33.8,
+                "close": 35.49,
+                "volume": 24362069.0,
+                "amount": 843901790.37
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 35.93,
+                "high": 36.22,
+                "low": 35.39,
+                "close": 35.46,
+                "volume": 21227332.0,
+                "amount": 760419234.64
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 38.19,
+                "end_close": 35.46,
+                "close_to_close_return": -0.071485,
+                "max_drawdown_close": -0.118774,
+                "realized_vol_ann": 0.311912,
+                "window_high": 39.5,
+                "window_low": 33.8,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 38.93,
+                "end_close": 35.46,
+                "close_to_close_return": -0.089134,
+                "max_drawdown_close": -0.143921,
+                "realized_vol_ann": 0.243849,
+                "window_high": 40.81,
+                "window_low": 33.8,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 47.9,
+                "end_close": 35.46,
+                "close_to_close_return": -0.259708,
+                "max_drawdown_close": -0.297924,
+                "realized_vol_ann": 0.309762,
+                "window_high": 50.45,
+                "window_low": 33.8,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/002230.SZ_BaostockAdapter.fetch_daily_none.csv"
+          }
+        }
+      },
+      "primary_layer": "baostock_adapter_qfq",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [
+          {
+            "left": "baostock_adapter_qfq",
+            "right": "baostock_adapter_none",
+            "date": "2026-11-24",
+            "left_close": 35.46,
+            "right_close": 35.46,
+            "rel_diff": 0.0,
+            "over_1pct": false
+          }
+        ],
+        "material_mismatch": false,
+        "notes": []
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率"
+    },
+    {
+      "symbol": "09660.HK",
+      "market": "HK",
+      "currency": "HKD",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "港股使用 5 位代码加 .HK"
+      },
+      "status": "stopped_ohlc",
+      "identity": {
+        "expect": "地平线",
+        "observed_name": "地平线",
+        "name_ok": true,
+        "profile_ok": true,
+        "profile_error": null,
+        "profile_seconds": 0.832,
+        "profile_preview": [
+          {
+            "公司名称": "地平线",
+            "英文名称": "Horizon Robotics",
+            "注册地": "Cayman Islands 开曼群岛（英属）",
+            "注册地址": "PO Box 309, Ugland House, Grand Cayman, Cayman Islands",
+            "公司成立日期": "2015-07-21",
+            "所属行业": "软件服务",
+            "董事长": "余凯",
+            "公司秘书": "赵奇,苏嘉敏",
+            "员工人数": 2052,
+            "办公地址": "中国上海市中国(上海)自由贸易试验区临港新片区云鹃南路1868号,香港铜锣湾希慎道33号利园一期19楼1928室,中国北京市海淀区丰豪东路9号2号楼A座",
+            "公司网址": "www.horizon.auto",
+            "E-MAIL": "investor_relations@horizon.auto",
+            "年结日": "12-31",
+            "联系电话": "+852 (10) 8345-2666",
+            "核数师": "罗兵咸永道会计师事务所",
+            "传真": null,
+            "公司介绍": "    地平线是市场领先的乘用车高级辅助驾驶(ADAS)和高阶自动驾驶(AD)解决方案供应商,拥有专有的软硬件技术。公司的解决方案整合了领先的算法、专用的软件和先进的处理硬件,为高级辅助和高阶自动驾驶提供核心技术,从而提高驾驶和乘坐的安全性和体验感。依托已大规模部署的前装量产解决方案,公司成为了智能汽车转型及商业化的关键推动者。根据灼识咨询的资料,自公司2021年大规模量产解决方案起,按年度装机量计算,公司是首家前装量产的高级辅助驾驶和高阶自动驾驶解决方案的中国公司,且每年均为装机量最大。公司拥有庞大的全球客户群,包括行业领先的OEM和一级供应商。作为市场领导者,公司抓住行业的巨大发展机会,业务在过去三年中实现显着的规模性增长。",
+            "symbol": "9660.HK",
+            "source": "akshare"
+          }
+        ],
+        "normalized_symbol": null,
+        "note": "akshare_kline._to_symbol 会把 5 位代码去掉一个前导 0，例如 09988 → 9988.HK。本次请求仍使用用户给出的 5 位代码。",
+        "english_name": "Horizon Robotics"
+      },
+      "dividend": {
+        "ok": false,
+        "error": null,
+        "seconds": 0.585,
+        "ex_dates": [],
+        "preview": []
+      },
+      "layers": {
+        "akshare_kline_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 1.383,
+          "series": {
+            "source": "akshare_kline._fetch_stock",
+            "adjust": "none",
+            "rows": 513,
+            "first_date": "2024-10-24",
+            "last_date": "2026-11-23",
+            "last_bar": {
+              "trade_date": "2026-11-23",
+              "open": 2.865,
+              "high": 3.19,
+              "low": 2.865,
+              "close": 3.03,
+              "volume": 246463062.0,
+              "amount": 753097178.0
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-17",
+                "open": 3.795,
+                "high": 3.795,
+                "low": 3.46,
+                "close": 3.49,
+                "volume": 208470422.0,
+                "amount": 735540321.0
+              },
+              {
+                "trade_date": "2026-11-18",
+                "open": 3.47,
+                "high": 3.525,
+                "low": 3.35,
+                "close": 3.485,
+                "volume": 125036259.0,
+                "amount": 431472749.0
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 3.48,
+                "high": 3.48,
+                "low": 3.335,
+                "close": 3.395,
+                "volume": 157185214.0,
+                "amount": 533282470.0
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 3.315,
+                "high": 3.315,
+                "low": 3.065,
+                "close": 3.12,
+                "volume": 275394920.0,
+                "amount": 859573235.0
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 2.865,
+                "high": 3.19,
+                "low": 2.865,
+                "close": 3.03,
+                "volume": 246463062.0,
+                "amount": 753097178.0
+              }
+            ],
+            "ohlc_problems": [
+              "2026-09-04 OHLC 不自洽"
+            ],
+            "windows": {
+              "20": null,
+              "60": null,
+              "120": null
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "adjustment_note": "该函数调用 ak.stock_hk_daily，上游注释标明不复权。后复权脚本依赖付费 CSV，本次没有运行。",
+            "bars_csv": "research/output/bars/09660.HK_akshare_kline._fetch_stock_none.csv"
+          }
+        }
+      },
+      "coverage": "OHLC 约束未通过，停止收益计算",
+      "primary_layer": "akshare_kline_none",
+      "primary_reason": "只有带 OHLC 问题的序列可用，相应收益计算停止",
+      "cross_check": {
+        "comparisons": [],
+        "material_mismatch": false,
+        "notes": [
+          "港股本次只有不复权一条原生日线，没有第二来源交叉。"
+        ]
+      }
+    },
+    {
+      "symbol": "01810.HK",
+      "market": "HK",
+      "currency": "HKD",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "港股使用 5 位代码加 .HK"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "小米",
+        "observed_name": "小米集团",
+        "name_ok": true,
+        "profile_ok": true,
+        "profile_error": null,
+        "profile_seconds": 0.664,
+        "profile_preview": [
+          {
+            "公司名称": "小米集团",
+            "英文名称": "XIAOMI CORPORATION",
+            "注册地": "Cayman Islands 开曼群岛（英属）",
+            "注册地址": "PO Box 309, Ugland House, Grand Cayman, Cayman Islands",
+            "公司成立日期": "2010-01-05",
+            "所属行业": "资讯科技器材",
+            "董事长": "雷军",
+            "公司秘书": "陈晓琳,高原",
+            "员工人数": 52876,
+            "办公地址": "中华人民共和国北京市海淀区安宁庄路小米科技园,香港铜锣湾希慎道33号利园一期19楼1928室",
+            "公司网址": "www.mi.com",
+            "E-MAIL": "xiaomi@hkstrategies.com",
+            "年结日": "12-31",
+            "联系电话": null,
+            "核数师": "罗兵咸永道会计师事务所",
+            "传真": "01060606666-1101",
+            "公司介绍": "    小米集团是一家以手机、智能硬件和IoT平台为核心的互联网公司。公司的产品按照产品功能、形态及模式,大体上可以划分为智能手机、IoT和生活消费产品、互联网服务产品。作为一家由工程师和设计师创建的公司,小米集团崇尚大胆创新的互联网文化,并不断探索前沿科技。创新精神在小米蓬勃发展并渗透到每个角落,并引导小米集团所做的一切。同时,小米集团不懈追求效率的持续提升。小米集团致力於降低运营成本,并同时把效率提升产生的价值回馈给小米集团的用户。小米集团独特且强大的铁人三项商业模式由三个相互协作的支柱组成(1)创新、高质量、精心设计且专注於卓越用户体验的硬件,(2)使小米集团能以厚道的价格销售产品的高效新零售和(3)丰富的互联网服务。",
+            "symbol": "1810.HK",
+            "source": "akshare"
+          }
+        ],
+        "normalized_symbol": null,
+        "note": "akshare_kline._to_symbol 会把 5 位代码去掉一个前导 0，例如 09988 → 9988.HK。本次请求仍使用用户给出的 5 位代码。",
+        "english_name": "XIAOMI CORPORATION"
+      },
+      "dividend": {
+        "ok": false,
+        "error": null,
+        "seconds": 0.383,
+        "ex_dates": [],
+        "preview": []
+      },
+      "layers": {
+        "akshare_kline_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 0.713,
+          "series": {
+            "source": "akshare_kline._fetch_stock",
+            "adjust": "none",
+            "rows": 713,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 27.52,
+              "high": 27.84,
+              "low": 25.9,
+              "close": 26.5,
+              "volume": 232838214.0,
+              "amount": 6185781052.0
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 29.92,
+                "high": 30.1,
+                "low": 29.42,
+                "close": 29.66,
+                "volume": 100207665.0,
+                "amount": 2976304316.0
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 29.0,
+                "high": 29.14,
+                "low": 28.26,
+                "close": 28.52,
+                "volume": 134914060.0,
+                "amount": 3855284862.0
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 28.2,
+                "high": 28.3,
+                "low": 27.4,
+                "close": 27.64,
+                "volume": 157739608.0,
+                "amount": 4370247269.0
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 27.16,
+                "high": 27.7,
+                "low": 26.8,
+                "close": 27.52,
+                "volume": 132508409.0,
+                "amount": 3619274132.0
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 27.52,
+                "high": 27.84,
+                "low": 25.9,
+                "close": 26.5,
+                "volume": 232838214.0,
+                "amount": 6185781052.0
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 25.66,
+                "end_close": 26.5,
+                "close_to_close_return": 0.032736,
+                "max_drawdown_close": -0.153355,
+                "realized_vol_ann": 0.5153,
+                "window_high": 31.74,
+                "window_low": 25.4,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-28",
+                "end_date": "2026-11-24",
+                "start_close": 27.82,
+                "end_close": 26.5,
+                "close_to_close_return": -0.047448,
+                "max_drawdown_close": -0.168073,
+                "realized_vol_ann": 0.490036,
+                "window_high": 31.74,
+                "window_low": 23.58,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-06-03",
+                "end_date": "2026-11-24",
+                "start_close": 28.58,
+                "end_close": 26.5,
+                "close_to_close_return": -0.072778,
+                "max_drawdown_close": -0.257842,
+                "realized_vol_ann": 0.501701,
+                "window_high": 32.4,
+                "window_low": 21.3,
+                "label": "计算",
+                "dividend_in_window": false
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "adjustment_note": "该函数调用 ak.stock_hk_daily，上游注释标明不复权。后复权脚本依赖付费 CSV，本次没有运行。",
+            "bars_csv": "research/output/bars/01810.HK_akshare_kline._fetch_stock_none.csv"
+          }
+        }
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。",
+      "primary_layer": "akshare_kline_none",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [],
+        "material_mismatch": false,
+        "notes": [
+          "港股本次只有不复权一条原生日线，没有第二来源交叉。"
+        ]
+      }
+    },
+    {
+      "symbol": "000591.SZ",
+      "market": "A",
+      "currency": "CNY",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "后缀与代码段一致"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "太阳能",
+        "observed_name": "太阳能",
+        "name_ok": true,
+        "source": "BaostockAdapter.fetch_meta",
+        "f10_ok": false,
+        "f10_error": "未调用。AkShare F10 走东方财富，同一次准备中已出现 push2 限流。"
+      },
+      "layers": {
+        "akshare_provider_qfq": {
+          "ok": false,
+          "error": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。",
+          "seconds": 0,
+          "series": null
+        },
+        "eastmoney_provider_qfq": {
+          "ok": false,
+          "error": "与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。",
+          "seconds": 0,
+          "series": null
+        },
+        "baostock_adapter_qfq": {
+          "ok": true,
+          "error": null,
+          "seconds": 8.505,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "qfq",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 4.35,
+              "high": 4.37,
+              "low": 4.2,
+              "close": 4.21,
+              "volume": 73292489.0,
+              "amount": 314254511.46
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 4.4,
+                "high": 4.48,
+                "low": 4.33,
+                "close": 4.37,
+                "volume": 65647832.0,
+                "amount": 288933586.2
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 4.35,
+                "high": 4.38,
+                "low": 4.2,
+                "close": 4.22,
+                "volume": 73077608.0,
+                "amount": 312906617.37
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 4.17,
+                "high": 4.24,
+                "low": 4.13,
+                "close": 4.18,
+                "volume": 62101605.0,
+                "amount": 259326001.14
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 4.2,
+                "high": 4.29,
+                "low": 4.18,
+                "close": 4.29,
+                "volume": 69457240.0,
+                "amount": 294206394.98
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 4.35,
+                "high": 4.37,
+                "low": 4.2,
+                "close": 4.21,
+                "volume": 73292489.0,
+                "amount": 314254511.46
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 3.96,
+                "end_close": 4.21,
+                "close_to_close_return": 0.063131,
+                "max_drawdown_close": -0.112527,
+                "realized_vol_ann": 0.523368,
+                "window_high": 4.9,
+                "window_low": 3.96,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 4.25,
+                "end_close": 4.21,
+                "close_to_close_return": -0.009412,
+                "max_drawdown_close": -0.112527,
+                "realized_vol_ann": 0.318024,
+                "window_high": 4.9,
+                "window_low": 3.86,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 6.056,
+                "end_close": 4.21,
+                "close_to_close_return": -0.30482,
+                "max_drawdown_close": -0.346101,
+                "realized_vol_ann": 0.325637,
+                "window_high": 6.485,
+                "window_low": 3.86,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/000591.SZ_BaostockAdapter.fetch_daily_qfq.csv"
+          }
+        },
+        "baostock_adapter_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 4.549,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "none",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 4.35,
+              "high": 4.37,
+              "low": 4.2,
+              "close": 4.21,
+              "volume": 73292489.0,
+              "amount": 314254511.46
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 4.4,
+                "high": 4.48,
+                "low": 4.33,
+                "close": 4.37,
+                "volume": 65647832.0,
+                "amount": 288933586.2
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 4.35,
+                "high": 4.38,
+                "low": 4.2,
+                "close": 4.22,
+                "volume": 73077608.0,
+                "amount": 312906617.37
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 4.17,
+                "high": 4.24,
+                "low": 4.13,
+                "close": 4.18,
+                "volume": 62101605.0,
+                "amount": 259326001.14
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 4.2,
+                "high": 4.29,
+                "low": 4.18,
+                "close": 4.29,
+                "volume": 69457240.0,
+                "amount": 294206394.98
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 4.35,
+                "high": 4.37,
+                "low": 4.2,
+                "close": 4.21,
+                "volume": 73292489.0,
+                "amount": 314254511.46
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 3.96,
+                "end_close": 4.21,
+                "close_to_close_return": 0.063131,
+                "max_drawdown_close": -0.112527,
+                "realized_vol_ann": 0.523368,
+                "window_high": 4.9,
+                "window_low": 3.96,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 4.25,
+                "end_close": 4.21,
+                "close_to_close_return": -0.009412,
+                "max_drawdown_close": -0.112527,
+                "realized_vol_ann": 0.318024,
+                "window_high": 4.9,
+                "window_low": 3.86,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 6.07,
+                "end_close": 4.21,
+                "close_to_close_return": -0.306425,
+                "max_drawdown_close": -0.347611,
+                "realized_vol_ann": 0.325818,
+                "window_high": 6.5,
+                "window_low": 3.86,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/000591.SZ_BaostockAdapter.fetch_daily_none.csv"
+          }
+        }
+      },
+      "primary_layer": "baostock_adapter_qfq",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [
+          {
+            "left": "baostock_adapter_qfq",
+            "right": "baostock_adapter_none",
+            "date": "2026-11-24",
+            "left_close": 4.21,
+            "right_close": 4.21,
+            "rel_diff": 0.0,
+            "over_1pct": false
+          }
+        ],
+        "material_mismatch": false,
+        "notes": []
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率"
+    },
+    {
+      "symbol": "600276.SH",
+      "market": "A",
+      "currency": "CNY",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "后缀与代码段一致"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "恒瑞",
+        "observed_name": "恒瑞医药",
+        "name_ok": true,
+        "source": "BaostockAdapter.fetch_meta",
+        "f10_ok": false,
+        "f10_error": "未调用。AkShare F10 走东方财富，同一次准备中已出现 push2 限流。"
+      },
+      "layers": {
+        "akshare_provider_qfq": {
+          "ok": false,
+          "error": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。",
+          "seconds": 0,
+          "series": null
+        },
+        "eastmoney_provider_qfq": {
+          "ok": false,
+          "error": "与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。",
+          "seconds": 0,
+          "series": null
+        },
+        "baostock_adapter_qfq": {
+          "ok": true,
+          "error": null,
+          "seconds": 4.787,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "qfq",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 48.0,
+              "high": 48.0,
+              "low": 46.67,
+              "close": 47.62,
+              "volume": 46715981.0,
+              "amount": 2207255518.45
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 47.6,
+                "high": 47.6,
+                "low": 46.11,
+                "close": 46.9,
+                "volume": 48066468.0,
+                "amount": 2241193010.4
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 47.13,
+                "high": 47.2,
+                "low": 46.3,
+                "close": 46.88,
+                "volume": 33974631.0,
+                "amount": 1587169985.39
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 46.17,
+                "high": 47.18,
+                "low": 45.76,
+                "close": 47.0,
+                "volume": 54689964.0,
+                "amount": 2538870100.17
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 47.0,
+                "high": 47.75,
+                "low": 46.0,
+                "close": 47.71,
+                "volume": 46520218.0,
+                "amount": 2185112101.98
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 48.0,
+                "high": 48.0,
+                "low": 46.67,
+                "close": 47.62,
+                "volume": 46715981.0,
+                "amount": 2207255518.45
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 45.55,
+                "end_close": 47.62,
+                "close_to_close_return": 0.045445,
+                "max_drawdown_close": -0.070395,
+                "realized_vol_ann": 0.279896,
+                "window_high": 50.98,
+                "window_low": 45.55,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 46.76,
+                "end_close": 47.62,
+                "close_to_close_return": 0.018392,
+                "max_drawdown_close": -0.10376,
+                "realized_vol_ann": 0.286249,
+                "window_high": 50.98,
+                "window_low": 41.89,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 50.19,
+                "end_close": 47.62,
+                "close_to_close_return": -0.051205,
+                "max_drawdown_close": -0.257913,
+                "realized_vol_ann": 0.351328,
+                "window_high": 58.0,
+                "window_low": 41.89,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/600276.SH_BaostockAdapter.fetch_daily_qfq.csv"
+          }
+        },
+        "baostock_adapter_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 5.084,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "none",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 48.0,
+              "high": 48.0,
+              "low": 46.67,
+              "close": 47.62,
+              "volume": 46715981.0,
+              "amount": 2207255518.45
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 47.6,
+                "high": 47.6,
+                "low": 46.11,
+                "close": 46.9,
+                "volume": 48066468.0,
+                "amount": 2241193010.4
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 47.13,
+                "high": 47.2,
+                "low": 46.3,
+                "close": 46.88,
+                "volume": 33974631.0,
+                "amount": 1587169985.39
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 46.17,
+                "high": 47.18,
+                "low": 45.76,
+                "close": 47.0,
+                "volume": 54689964.0,
+                "amount": 2538870100.17
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 47.0,
+                "high": 47.75,
+                "low": 46.0,
+                "close": 47.71,
+                "volume": 46520218.0,
+                "amount": 2185112101.98
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 48.0,
+                "high": 48.0,
+                "low": 46.67,
+                "close": 47.62,
+                "volume": 46715981.0,
+                "amount": 2207255518.45
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 45.55,
+                "end_close": 47.62,
+                "close_to_close_return": 0.045445,
+                "max_drawdown_close": -0.070395,
+                "realized_vol_ann": 0.279896,
+                "window_high": 50.98,
+                "window_low": 45.55,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 46.76,
+                "end_close": 47.62,
+                "close_to_close_return": 0.018392,
+                "max_drawdown_close": -0.10376,
+                "realized_vol_ann": 0.286249,
+                "window_high": 50.98,
+                "window_low": 41.89,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 50.19,
+                "end_close": 47.62,
+                "close_to_close_return": -0.051205,
+                "max_drawdown_close": -0.257913,
+                "realized_vol_ann": 0.351328,
+                "window_high": 58.0,
+                "window_low": 41.89,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/600276.SH_BaostockAdapter.fetch_daily_none.csv"
+          }
+        }
+      },
+      "primary_layer": "baostock_adapter_qfq",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [
+          {
+            "left": "baostock_adapter_qfq",
+            "right": "baostock_adapter_none",
+            "date": "2026-11-24",
+            "left_close": 47.62,
+            "right_close": 47.62,
+            "rel_diff": 0.0,
+            "over_1pct": false
+          }
+        ],
+        "material_mismatch": false,
+        "notes": []
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率"
+    },
+    {
+      "symbol": "00981.HK",
+      "market": "HK",
+      "currency": "HKD",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "港股使用 5 位代码加 .HK"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "中芯",
+        "observed_name": "中芯国际集成电路制造有限公司",
+        "name_ok": true,
+        "profile_ok": true,
+        "profile_error": null,
+        "profile_seconds": 0.536,
+        "profile_preview": [
+          {
+            "公司名称": "中芯国际集成电路制造有限公司",
+            "英文名称": "SEMICONDUCTOR MANUFACTURING INTERNATIONAL CORPORATION",
+            "注册地": "Cayman Islands 开曼群岛（英属）",
+            "注册地址": "PO Box 2681, Cricket Square, Hutchins Drive, Grand Cayman, Cayman Islands",
+            "公司成立日期": "2000-04-03",
+            "所属行业": "半导体",
+            "董事长": "刘训峰",
+            "公司秘书": "郭光莉",
+            "员工人数": 19952,
+            "办公地址": "中国上海市浦东新区张江路18号",
+            "公司网址": "www.smics.com",
+            "E-MAIL": "ir@smics.com",
+            "年结日": "12-31",
+            "联系电话": "021-20812800",
+            "核数师": "德勤·关黄陈方会计师行,安永华明会计师事务所(特殊普通合伙),安永会计师事务所",
+            "传真": null,
+            "公司介绍": "    中芯国际集成电路制造有限公司(证券代码:00981.HK/688981.SH)是世界领先的集成电路晶圆代工企业之一,也是中国大陆集成电路制造业领导者,拥有领先的工艺制造能力、产能优势、服务配套,向全球客户提供8英寸和12英寸晶圆代工与技术服务。中芯国际总部位于中国上海,拥有全球化的制造和服务基地,在上海、北京、天津、深圳建有多座8英寸和12英寸晶圆厂。中芯国际还在美国、欧洲、日本和中国台湾设立营销办事处、提供客户服务。",
+            "symbol": "0981.HK",
+            "source": "akshare"
+          }
+        ],
+        "normalized_symbol": null,
+        "note": "akshare_kline._to_symbol 会把 5 位代码去掉一个前导 0，例如 09988 → 9988.HK。本次请求仍使用用户给出的 5 位代码。",
+        "english_name": "SEMICONDUCTOR MANUFACTURING INTERNATIONAL CORPORATION"
+      },
+      "dividend": {
+        "ok": false,
+        "error": null,
+        "seconds": 0.471,
+        "ex_dates": [],
+        "preview": []
+      },
+      "layers": {
+        "akshare_kline_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 1.188,
+          "series": {
+            "source": "akshare_kline._fetch_stock",
+            "adjust": "none",
+            "rows": 713,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 50.35,
+              "high": 51.1,
+              "low": 48.8,
+              "close": 49.0,
+              "volume": 88608057.0,
+              "amount": 4416849705.0
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 49.9,
+                "high": 50.55,
+                "low": 48.28,
+                "close": 49.2,
+                "volume": 81487319.0,
+                "amount": 4031299986.0
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 50.75,
+                "high": 52.7,
+                "low": 49.98,
+                "close": 50.5,
+                "volume": 176891749.0,
+                "amount": 9088861663.0
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 49.3,
+                "high": 51.5,
+                "low": 48.32,
+                "close": 49.12,
+                "volume": 106834525.0,
+                "amount": 5311753543.0
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 48.1,
+                "high": 49.56,
+                "low": 46.62,
+                "close": 48.74,
+                "volume": 95478871.0,
+                "amount": 4596191521.0
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 50.35,
+                "high": 51.1,
+                "low": 48.8,
+                "close": 49.0,
+                "volume": 88608057.0,
+                "amount": 4416849705.0
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 45.34,
+                "end_close": 49.0,
+                "close_to_close_return": 0.080723,
+                "max_drawdown_close": -0.108368,
+                "realized_vol_ann": 0.628528,
+                "window_high": 52.7,
+                "window_low": 41.06,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-28",
+                "end_date": "2026-11-24",
+                "start_close": 70.15,
+                "end_close": 49.0,
+                "close_to_close_return": -0.301497,
+                "max_drawdown_close": -0.397597,
+                "realized_vol_ann": 0.47805,
+                "window_high": 72.9,
+                "window_low": 41.06,
+                "label": "计算",
+                "dividend_in_window": false
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-06-03",
+                "end_date": "2026-11-24",
+                "start_close": 82.95,
+                "end_close": 49.0,
+                "close_to_close_return": -0.409283,
+                "max_drawdown_close": -0.523266,
+                "realized_vol_ann": 0.600534,
+                "window_high": 91.55,
+                "window_low": 41.06,
+                "label": "计算",
+                "dividend_in_window": false
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "adjustment_note": "该函数调用 ak.stock_hk_daily，上游注释标明不复权。后复权脚本依赖付费 CSV，本次没有运行。",
+            "bars_csv": "research/output/bars/00981.HK_akshare_kline._fetch_stock_none.csv"
+          }
+        }
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。",
+      "primary_layer": "akshare_kline_none",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [],
+        "material_mismatch": false,
+        "notes": [
+          "港股本次只有不复权一条原生日线，没有第二来源交叉。"
+        ]
+      }
+    },
+    {
+      "symbol": "601899.SH",
+      "market": "A",
+      "currency": "CNY",
+      "priority": false,
+      "code_check": {
+        "ok": true,
+        "detail": "后缀与代码段一致"
+      },
+      "status": "calculated",
+      "identity": {
+        "expect": "紫金",
+        "observed_name": "紫金矿业",
+        "name_ok": true,
+        "source": "BaostockAdapter.fetch_meta",
+        "f10_ok": false,
+        "f10_error": "未调用。AkShare F10 走东方财富，同一次准备中已出现 push2 限流。"
+      },
+      "layers": {
+        "akshare_provider_qfq": {
+          "ok": false,
+          "error": "同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。",
+          "seconds": 0,
+          "series": null
+        },
+        "eastmoney_provider_qfq": {
+          "ok": false,
+          "error": "与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。",
+          "seconds": 0,
+          "series": null
+        },
+        "baostock_adapter_qfq": {
+          "ok": true,
+          "error": null,
+          "seconds": 6.241,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "qfq",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 24.74,
+              "high": 24.76,
+              "low": 23.05,
+              "close": 23.21,
+              "volume": 320757253.0,
+              "amount": 7611690508.45
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 25.66,
+                "high": 25.66,
+                "low": 24.22,
+                "close": 24.52,
+                "volume": 333041647.0,
+                "amount": 8218059016.27
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 24.01,
+                "high": 24.03,
+                "low": 23.06,
+                "close": 23.88,
+                "volume": 422591394.0,
+                "amount": 9919829997.47
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 22.85,
+                "high": 23.91,
+                "low": 22.56,
+                "close": 23.73,
+                "volume": 441481379.0,
+                "amount": 10188133128.75
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 24.01,
+                "high": 24.36,
+                "low": 23.7,
+                "close": 24.26,
+                "volume": 282766653.0,
+                "amount": 6803214324.19
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 24.74,
+                "high": 24.76,
+                "low": 23.05,
+                "close": 23.21,
+                "volume": 320757253.0,
+                "amount": 7611690508.45
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 27.85,
+                "end_close": 23.21,
+                "close_to_close_return": -0.166607,
+                "max_drawdown_close": -0.212687,
+                "realized_vol_ann": 0.439058,
+                "window_high": 29.95,
+                "window_low": 22.56,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 34.54,
+                "end_close": 23.21,
+                "close_to_close_return": -0.328025,
+                "max_drawdown_close": -0.330159,
+                "realized_vol_ann": 0.385943,
+                "window_high": 35.47,
+                "window_low": 22.56,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 29.6259,
+                "end_close": 23.21,
+                "close_to_close_return": -0.216565,
+                "max_drawdown_close": -0.337146,
+                "realized_vol_ann": 0.475862,
+                "window_high": 35.47,
+                "window_low": 22.56,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/601899.SH_BaostockAdapter.fetch_daily_qfq.csv"
+          }
+        },
+        "baostock_adapter_none": {
+          "ok": true,
+          "error": null,
+          "seconds": 6.15,
+          "series": {
+            "source": "BaostockAdapter.fetch_daily",
+            "adjust": "none",
+            "rows": 700,
+            "first_date": "2024-01-02",
+            "last_date": "2026-11-24",
+            "last_bar": {
+              "trade_date": "2026-11-24",
+              "open": 24.74,
+              "high": 24.76,
+              "low": 23.05,
+              "close": 23.21,
+              "volume": 320757253.0,
+              "amount": 7611690508.45
+            },
+            "recent": [
+              {
+                "trade_date": "2026-11-18",
+                "open": 25.66,
+                "high": 25.66,
+                "low": 24.22,
+                "close": 24.52,
+                "volume": 333041647.0,
+                "amount": 8218059016.27
+              },
+              {
+                "trade_date": "2026-11-19",
+                "open": 24.01,
+                "high": 24.03,
+                "low": 23.06,
+                "close": 23.88,
+                "volume": 422591394.0,
+                "amount": 9919829997.47
+              },
+              {
+                "trade_date": "2026-11-20",
+                "open": 22.85,
+                "high": 23.91,
+                "low": 22.56,
+                "close": 23.73,
+                "volume": 441481379.0,
+                "amount": 10188133128.75
+              },
+              {
+                "trade_date": "2026-11-23",
+                "open": 24.01,
+                "high": 24.36,
+                "low": 23.7,
+                "close": 24.26,
+                "volume": 282766653.0,
+                "amount": 6803214324.19
+              },
+              {
+                "trade_date": "2026-11-24",
+                "open": 24.74,
+                "high": 24.76,
+                "low": 23.05,
+                "close": 23.21,
+                "volume": 320757253.0,
+                "amount": 7611690508.45
+              }
+            ],
+            "ohlc_problems": [],
+            "windows": {
+              "20": {
+                "sessions": 20,
+                "start_date": "2026-10-27",
+                "end_date": "2026-11-24",
+                "start_close": 27.85,
+                "end_close": 23.21,
+                "close_to_close_return": -0.166607,
+                "max_drawdown_close": -0.212687,
+                "realized_vol_ann": 0.439058,
+                "window_high": 29.95,
+                "window_low": 22.56,
+                "label": "计算"
+              },
+              "60": {
+                "sessions": 60,
+                "start_date": "2026-08-24",
+                "end_date": "2026-11-24",
+                "start_close": 34.54,
+                "end_close": 23.21,
+                "close_to_close_return": -0.328025,
+                "max_drawdown_close": -0.330159,
+                "realized_vol_ann": 0.385943,
+                "window_high": 35.47,
+                "window_low": 22.56,
+                "label": "计算"
+              },
+              "120": {
+                "sessions": 120,
+                "start_date": "2026-05-29",
+                "end_date": "2026-11-24",
+                "start_close": 30.44,
+                "end_close": 23.21,
+                "close_to_close_return": -0.237516,
+                "max_drawdown_close": -0.345275,
+                "realized_vol_ann": 0.47607,
+                "window_high": 35.8,
+                "window_low": 22.56,
+                "label": "计算"
+              }
+            },
+            "fetched_at": "2026-11-24T21:49:59+08:00",
+            "bars_csv": "research/output/bars/601899.SH_BaostockAdapter.fetch_daily_none.csv"
+          }
+        }
+      },
+      "primary_layer": "baostock_adapter_qfq",
+      "primary_reason": "该层 OHLC 约束通过，作为本次计算所用序列",
+      "cross_check": {
+        "comparisons": [
+          {
+            "left": "baostock_adapter_qfq",
+            "right": "baostock_adapter_none",
+            "date": "2026-11-24",
+            "left_close": 23.21,
+            "right_close": 23.21,
+            "rel_diff": 0.0,
+            "over_1pct": false
+          }
+        ],
+        "material_mismatch": false,
+        "notes": []
+      },
+      "coverage": "身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率"
+    }
+  ]
+}

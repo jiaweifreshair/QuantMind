@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>QuantMind 只读研究记录 · 2026-11-24T21:49:59+08:00</title>
+<style>
+  :root { color-scheme: light; --ink:#1c1915; --paper:#f6f3ec; --line:#d9d1c3; --alert:#8c2f2f; --ok:#1f4d38; }
+  body { margin:0; font:16px/1.55 "Source Han Sans SC","Noto Sans SC","PingFang SC",sans-serif; color:var(--ink); background:var(--paper); }
+  main { max-width:1080px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:32px; line-height:1.25; margin:0 0 8px; }
+  h2 { margin-top:36px; font-size:22px; }
+  h3 { margin:0; font-size:22px; }
+  h4 { margin:18px 0 6px; font-size:15px; }
+  .banner { background:#3d1f1f; color:#fff8f2; padding:18px 20px; border-radius:14px; }
+  .banner strong { color:#ffd3c2; }
+  .muted { color:#655e54; font-size:13px; }
+  table { width:100%; border-collapse:collapse; background:#fff; }
+  th, td { border-bottom:1px solid var(--line); text-align:left; padding:8px 10px; vertical-align:top; font-size:14px; }
+  th { background:#efe8dc; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; margin:16px 0; }
+  .card.priority { border-color:#8c2f2f; }
+  .kicker { letter-spacing:.08em; font-size:12px; margin:0; color:#8c2f2f; }
+  .status { font-weight:700; }
+  dl { display:grid; grid-template-columns:140px 1fr; gap:6px 12px; }
+  dt { color:#655e54; }
+  dd { margin:0; }
+  code { font-family:ui-monospace,monospace; font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="muted">抓取与生成时间（Asia/Shanghai）2026-11-24T21:49:59+08:00</p>
+  <h1>九只股票的只读数据记录</h1>
+  <section class="banner">
+    <p><strong>QuantMind 整套平台没有运行。</strong>没有启动 Web、引擎、交易、行情推送，没有部署，没有下单，也没有原生 LLM 研报。</p>
+    <p>实际跑通的是上游源码里的只读日线与公司资料函数。下面的价格和区间涨跌只来自这些函数的返回值。没有上涨概率、净胜率或买卖承诺。</p>
+  </section>
+  <h2>上游与本次边界</h2>
+  <ul>
+    <li>上游 <a href="https://github.com/qusong0627/QuantMind">qusong0627/QuantMind</a>，master HEAD <code>1ba0b4d818ab8aa4910b3439f3842a5ba86a0247</code>，pyproject 版本 1.0.0，许可证 AGPL-3.0。</li>
+    <li>GitHub Releases 列表为空，没有可用的发布版本号，因此版本以 pyproject 的 1.0.0 与提交 SHA 为准。</li>
+    <li>个人仓库原来只有 README。本次没有改上游，没有改可见性，没有强推。</li>
+    <li>持有周期按数周到数月查看 20/60/120 个交易日，只做股票，不涉及加密资产。</li>
+  </ul>
+  <h2>模块结果</h2>
+  <table>
+    <thead><tr><th>模块</th><th>结果</th><th>说明</th></tr></thead>
+    <tbody><tr><td>deploy/full-deploy.sh</td><td>未执行</td><td>审阅到 curl|sudo bash，按约束不运行</td></tr><tr><td>scripts/setup/init.sh</td><td>未执行</td><td>依赖容器内路径与数据库，不在本次只读范围</td></tr><tr><td>backend/main_oss.py</td><td>未执行</td><td>会拉起 API/Engine/Trade/Stream</td></tr><tr><td>券商 / QMT / 通达信下单 / 模拟撮合</td><td>未执行</td><td>本次明确禁用</td></tr><tr><td>QuantBot / 原生 LLM 研报</td><td>未运行</td><td>未配置 OPENAI_API_KEY, ANTHROPIC_API_KEY, DASHSCOPE_API_KEY, QWEN_API_KEY, QUANTDB_API_KEY, QUANTMIND_LLM_API_KEY</td></tr><tr><td>Qlib 回测</td><td>未安装/不可导入</td><td>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+ModuleNotFoundError: No module named &#x27;qlib&#x27;
+</td></tr><tr><td>scripts/stock_9layer_fetch.py</td><td>失败</td><td>优先标的 002415.SZ 直接运行。本机没有 QuantDB parquet。management tool to install the fastparquet package.  ==================================================================== ## L1 估值（3年截面分位） ====================================================================   [缺失] valuation 无数据  ==================================================================== ## L4 两融 ==================================================================== [缺失] margin_trading 无该标的 [error] L4b 读 None 失败: join() argument must be str, bytes, or os.PathLike object, not &#x27;NoneType&#x27;  </td></tr><tr><td>QuantDB / 付费港股 CSV</td><td>缺失</td><td>仓库与本机都没有 data/quantdb 或 data/quanthk/_paid_raw</td></tr><tr><td>A股 AkShareProvider / EastMoneyProvider</td><td>未取得日线</td><td>同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</td></tr><tr><td>A股 BaostockAdapter.fetch_daily / fetch_meta</td><td>5/5 只完成区间计算</td><td>匿名登录后的历史日线与证券简称，前复权与不复权各一次</td></tr><tr><td>港股 akshare_kline._fetch_stock + 公司资料/分红</td><td>3/4 只完成区间计算</td><td>不复权；未跑复权因子脚本</td></tr></tbody>
+  </table>
+  <h2>怎么读这些数字</h2>
+  <ul>
+    <li><b>事实</b>：函数返回的简称、交易日、OHLC、成交量。成交额只表示成交金额，不是资金净流入。</li>
+    <li><b>计算</b>：用上述收盘价做的区间涨跌、收盘最大回撤、年化实现波动。波动用日收益样本标准差乘以 252 的平方根。</li>
+    <li><b>推断</b>：本次没有。缺少预注册的样本外统计和交易成本，不能把区间涨跌写成概率或胜率。</li>
+    <li><b>缺口</b>：QuantDB 300 维因子、Qlib 回测、LLM 研报、港股后复权、宏观与资金流叙事都没有数据支持。</li>
+  </ul>
+  <h2>标的</h2>
+  <p>优先查看海康威视与阿里巴巴。其余标的使用同一套函数，覆盖状态写在每张卡片上。</p>
+  
+        <article class="card priority">
+          <header>
+            <p class="kicker">优先 · A · CNY</p>
+            <h3>002415.SZ 海康威视</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「海康威视」，观察值「海康威视」</dd>
+            <dt>计算序列</dt><dd>baostock_adapter_qfq · BaostockAdapter.fetch_daily · 复权 qfq</dd>
+            <dt>样本</dt><dd>700 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>34.85 CNY，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>34.25 → 34.85 CNY</td><td>1.75%</td><td>-4.91%</td><td>19.57%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-24 → 2026-11-24</span></td><td>34.15 → 34.85 CNY</td><td>2.05%</td><td>-10.61%</td><td>22.48%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-05-29 → 2026-11-24</span></td><td>30.08 → 34.85 CNY</td><td>15.85%</td><td>-15.56%</td><td>30.72%</td><td>计算</td></tr></tbody>
+          </table>
+          <p>120 个交易日前复权涨跌 15.85%，不复权 14.04%。表内使用前复权。两者不同说明区间内有除权，不复权涨跌不是投资者总回报。</p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>35.28</td><td>35.59</td><td>35.08</td><td>35.29</td><td>39329843</td></tr><tr><td>2026-11-19</td><td>35.20</td><td>35.80</td><td>35.12</td><td>35.71</td><td>59714068</td></tr><tr><td>2026-11-20</td><td>35.33</td><td>35.60</td><td>34.97</td><td>35.25</td><td>49298489</td></tr><tr><td>2026-11-23</td><td>34.85</td><td>35.28</td><td>34.48</td><td>35.15</td><td>46405296</td></tr><tr><td>2026-11-24</td><td>35.30</td><td>35.45</td><td>34.61</td><td>34.85</td><td>53357935</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_provider_qfq</b> 失败，0 秒，同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</li><li><b>eastmoney_provider_qfq</b> 失败，0 秒，与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。</li><li><b>baostock_adapter_qfq</b> 成功，13.725 秒</li><li><b>baostock_adapter_none</b> 成功，2.158 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>{&quot;left&quot;: &quot;baostock_adapter_qfq&quot;, &quot;right&quot;: &quot;baostock_adapter_none&quot;, &quot;date&quot;: &quot;2026-11-24&quot;, &quot;left_close&quot;: 34.85, &quot;right_close&quot;: 34.85, &quot;rel_diff&quot;: 0.0, &quot;over_1pct&quot;: false}</li></ul>
+        </article>
+        
+        <article class="card priority">
+          <header>
+            <p class="kicker">优先 · HK · HKD</p>
+            <h3>09988.HK 阿里巴巴集团控股有限公司</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「阿里」，观察值「阿里巴巴集团控股有限公司」；英文名称「Alibaba Group Holding Limited」</dd>
+            <dt>计算序列</dt><dd>akshare_kline_none · akshare_kline._fetch_stock · 复权 none</dd>
+            <dt>样本</dt><dd>712 根日线，2024-01-02 至 2026-11-23</dd>
+            <dt>最新日线收盘</dt><dd>83.05 HKD，交易日 2026-11-23。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-26 → 2026-11-23</span></td><td>97.95 → 83.05 HKD</td><td>-15.21%</td><td>-26.17%</td><td>55.54%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-27 → 2026-11-23</span></td><td>115.50 → 83.05 HKD</td><td>-28.10%</td><td>-30.26%</td><td>42.71%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-06-02 → 2026-11-23</span></td><td>130.90 → 83.05 HKD</td><td>-36.55%</td><td>-38.46%</td><td>47.09%</td><td>计算；窗口内有除净记录，不复权收益含价格缺口</td></tr></tbody>
+          </table>
+          <p></p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-17</td><td>87.20</td><td>88.20</td><td>85.10</td><td>85.45</td><td>173850688</td></tr><tr><td>2026-11-18</td><td>85.50</td><td>86.00</td><td>84.25</td><td>85.25</td><td>91692021</td></tr><tr><td>2026-11-19</td><td>82.25</td><td>82.50</td><td>80.20</td><td>80.55</td><td>150956784</td></tr><tr><td>2026-11-20</td><td>81.30</td><td>84.20</td><td>80.95</td><td>83.35</td><td>146982180</td></tr><tr><td>2026-11-23</td><td>80.85</td><td>83.75</td><td>79.50</td><td>83.05</td><td>139222187</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_kline_none</b> 成功，1.331 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>无第二来源或未形成可比收盘</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · A · CNY</p>
+            <h3>002230.SZ 科大讯飞</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「科大讯飞」，观察值「科大讯飞」</dd>
+            <dt>计算序列</dt><dd>baostock_adapter_qfq · BaostockAdapter.fetch_daily · 复权 qfq</dd>
+            <dt>样本</dt><dd>700 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>35.46 CNY，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>38.19 → 35.46 CNY</td><td>-7.15%</td><td>-11.88%</td><td>31.19%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-24 → 2026-11-24</span></td><td>38.93 → 35.46 CNY</td><td>-8.91%</td><td>-14.39%</td><td>24.38%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-05-29 → 2026-11-24</span></td><td>47.79 → 35.46 CNY</td><td>-25.80%</td><td>-29.63%</td><td>30.94%</td><td>计算</td></tr></tbody>
+          </table>
+          <p>120 个交易日的前复权与不复权涨跌接近，最新收盘也对齐。</p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>36.57</td><td>36.74</td><td>36.00</td><td>36.34</td><td>14545336</td></tr><tr><td>2026-11-19</td><td>36.20</td><td>36.43</td><td>35.40</td><td>35.90</td><td>21794971</td></tr><tr><td>2026-11-20</td><td>35.38</td><td>35.48</td><td>34.38</td><td>34.50</td><td>24988192</td></tr><tr><td>2026-11-23</td><td>34.06</td><td>35.56</td><td>33.80</td><td>35.49</td><td>24362069</td></tr><tr><td>2026-11-24</td><td>35.93</td><td>36.22</td><td>35.39</td><td>35.46</td><td>21227332</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_provider_qfq</b> 失败，0 秒，同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</li><li><b>eastmoney_provider_qfq</b> 失败，0 秒，与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。</li><li><b>baostock_adapter_qfq</b> 成功，5.303 秒</li><li><b>baostock_adapter_none</b> 成功，1.945 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>{&quot;left&quot;: &quot;baostock_adapter_qfq&quot;, &quot;right&quot;: &quot;baostock_adapter_none&quot;, &quot;date&quot;: &quot;2026-11-24&quot;, &quot;left_close&quot;: 35.46, &quot;right_close&quot;: 35.46, &quot;rel_diff&quot;: 0.0, &quot;over_1pct&quot;: false}</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · HK · HKD</p>
+            <h3>09660.HK 地平线</h3>
+            <p class="status">因 OHLC 约束停止</p>
+          </header>
+          <p>OHLC 约束未通过，停止收益计算</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「地平线」，观察值「地平线」；英文名称「Horizon Robotics」</dd>
+            <dt>计算序列</dt><dd>akshare_kline_none · akshare_kline._fetch_stock · 复权 none</dd>
+            <dt>样本</dt><dd>513 根日线，2024-10-24 至 2026-11-23</dd>
+            <dt>最新日线收盘</dt><dd>3.03 HKD，交易日 2026-11-23。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日</td><td colspan='5'>样本不足或已停止</td></tr><tr><td>60 个交易日</td><td colspan='5'>样本不足或已停止</td></tr><tr><td>120 个交易日</td><td colspan='5'>样本不足或已停止</td></tr></tbody>
+          </table>
+          <p></p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-17</td><td>3.79</td><td>3.79</td><td>3.46</td><td>3.49</td><td>208470422</td></tr><tr><td>2026-11-18</td><td>3.47</td><td>3.52</td><td>3.35</td><td>3.48</td><td>125036259</td></tr><tr><td>2026-11-19</td><td>3.48</td><td>3.48</td><td>3.33</td><td>3.40</td><td>157185214</td></tr><tr><td>2026-11-20</td><td>3.31</td><td>3.31</td><td>3.06</td><td>3.12</td><td>275394920</td></tr><tr><td>2026-11-23</td><td>2.87</td><td>3.19</td><td>2.87</td><td>3.03</td><td>246463062</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_kline_none</b> 成功，1.383 秒，OHLC：2026-09-04 OHLC 不自洽</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>无第二来源或未形成可比收盘</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · HK · HKD</p>
+            <h3>01810.HK 小米集团</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「小米」，观察值「小米集团」；英文名称「XIAOMI CORPORATION」</dd>
+            <dt>计算序列</dt><dd>akshare_kline_none · akshare_kline._fetch_stock · 复权 none</dd>
+            <dt>样本</dt><dd>713 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>26.50 HKD，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>25.66 → 26.50 HKD</td><td>3.27%</td><td>-15.34%</td><td>51.53%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-28 → 2026-11-24</span></td><td>27.82 → 26.50 HKD</td><td>-4.74%</td><td>-16.81%</td><td>49.00%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-06-03 → 2026-11-24</span></td><td>28.58 → 26.50 HKD</td><td>-7.28%</td><td>-25.78%</td><td>50.17%</td><td>计算</td></tr></tbody>
+          </table>
+          <p></p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>29.92</td><td>30.10</td><td>29.42</td><td>29.66</td><td>100207665</td></tr><tr><td>2026-11-19</td><td>29.00</td><td>29.14</td><td>28.26</td><td>28.52</td><td>134914060</td></tr><tr><td>2026-11-20</td><td>28.20</td><td>28.30</td><td>27.40</td><td>27.64</td><td>157739608</td></tr><tr><td>2026-11-23</td><td>27.16</td><td>27.70</td><td>26.80</td><td>27.52</td><td>132508409</td></tr><tr><td>2026-11-24</td><td>27.52</td><td>27.84</td><td>25.90</td><td>26.50</td><td>232838214</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_kline_none</b> 成功，0.713 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>无第二来源或未形成可比收盘</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · A · CNY</p>
+            <h3>000591.SZ 太阳能</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「太阳能」，观察值「太阳能」</dd>
+            <dt>计算序列</dt><dd>baostock_adapter_qfq · BaostockAdapter.fetch_daily · 复权 qfq</dd>
+            <dt>样本</dt><dd>700 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>4.21 CNY，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>3.96 → 4.21 CNY</td><td>6.31%</td><td>-11.25%</td><td>52.34%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-24 → 2026-11-24</span></td><td>4.25 → 4.21 CNY</td><td>-0.94%</td><td>-11.25%</td><td>31.80%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-05-29 → 2026-11-24</span></td><td>6.06 → 4.21 CNY</td><td>-30.48%</td><td>-34.61%</td><td>32.56%</td><td>计算</td></tr></tbody>
+          </table>
+          <p>120 个交易日的前复权与不复权涨跌接近，最新收盘也对齐。</p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>4.40</td><td>4.48</td><td>4.33</td><td>4.37</td><td>65647832</td></tr><tr><td>2026-11-19</td><td>4.35</td><td>4.38</td><td>4.20</td><td>4.22</td><td>73077608</td></tr><tr><td>2026-11-20</td><td>4.17</td><td>4.24</td><td>4.13</td><td>4.18</td><td>62101605</td></tr><tr><td>2026-11-23</td><td>4.20</td><td>4.29</td><td>4.18</td><td>4.29</td><td>69457240</td></tr><tr><td>2026-11-24</td><td>4.35</td><td>4.37</td><td>4.20</td><td>4.21</td><td>73292489</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_provider_qfq</b> 失败，0 秒，同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</li><li><b>eastmoney_provider_qfq</b> 失败，0 秒，与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。</li><li><b>baostock_adapter_qfq</b> 成功，8.505 秒</li><li><b>baostock_adapter_none</b> 成功，4.549 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>{&quot;left&quot;: &quot;baostock_adapter_qfq&quot;, &quot;right&quot;: &quot;baostock_adapter_none&quot;, &quot;date&quot;: &quot;2026-11-24&quot;, &quot;left_close&quot;: 4.21, &quot;right_close&quot;: 4.21, &quot;rel_diff&quot;: 0.0, &quot;over_1pct&quot;: false}</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · A · CNY</p>
+            <h3>600276.SH 恒瑞医药</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「恒瑞」，观察值「恒瑞医药」</dd>
+            <dt>计算序列</dt><dd>baostock_adapter_qfq · BaostockAdapter.fetch_daily · 复权 qfq</dd>
+            <dt>样本</dt><dd>700 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>47.62 CNY，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>45.55 → 47.62 CNY</td><td>4.54%</td><td>-7.04%</td><td>27.99%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-24 → 2026-11-24</span></td><td>46.76 → 47.62 CNY</td><td>1.84%</td><td>-10.38%</td><td>28.62%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-05-29 → 2026-11-24</span></td><td>50.19 → 47.62 CNY</td><td>-5.12%</td><td>-25.79%</td><td>35.13%</td><td>计算</td></tr></tbody>
+          </table>
+          <p>120 个交易日的前复权与不复权涨跌接近，最新收盘也对齐。</p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>47.60</td><td>47.60</td><td>46.11</td><td>46.90</td><td>48066468</td></tr><tr><td>2026-11-19</td><td>47.13</td><td>47.20</td><td>46.30</td><td>46.88</td><td>33974631</td></tr><tr><td>2026-11-20</td><td>46.17</td><td>47.18</td><td>45.76</td><td>47.00</td><td>54689964</td></tr><tr><td>2026-11-23</td><td>47.00</td><td>47.75</td><td>46.00</td><td>47.71</td><td>46520218</td></tr><tr><td>2026-11-24</td><td>48.00</td><td>48.00</td><td>46.67</td><td>47.62</td><td>46715981</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_provider_qfq</b> 失败，0 秒，同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</li><li><b>eastmoney_provider_qfq</b> 失败，0 秒，与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。</li><li><b>baostock_adapter_qfq</b> 成功，4.787 秒</li><li><b>baostock_adapter_none</b> 成功，5.084 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>{&quot;left&quot;: &quot;baostock_adapter_qfq&quot;, &quot;right&quot;: &quot;baostock_adapter_none&quot;, &quot;date&quot;: &quot;2026-11-24&quot;, &quot;left_close&quot;: 47.62, &quot;right_close&quot;: 47.62, &quot;rel_diff&quot;: 0.0, &quot;over_1pct&quot;: false}</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · HK · HKD</p>
+            <h3>00981.HK 中芯国际集成电路制造有限公司</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率。港股价格为不复权，窗口内若有除净，收益含价格缺口。</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「中芯」，观察值「中芯国际集成电路制造有限公司」；英文名称「SEMICONDUCTOR MANUFACTURING INTERNATIONAL CORPORATION」</dd>
+            <dt>计算序列</dt><dd>akshare_kline_none · akshare_kline._fetch_stock · 复权 none</dd>
+            <dt>样本</dt><dd>713 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>49.00 HKD，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>45.34 → 49.00 HKD</td><td>8.07%</td><td>-10.84%</td><td>62.85%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-28 → 2026-11-24</span></td><td>70.15 → 49.00 HKD</td><td>-30.15%</td><td>-39.76%</td><td>47.80%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-06-03 → 2026-11-24</span></td><td>82.95 → 49.00 HKD</td><td>-40.93%</td><td>-52.33%</td><td>60.05%</td><td>计算</td></tr></tbody>
+          </table>
+          <p></p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>49.90</td><td>50.55</td><td>48.28</td><td>49.20</td><td>81487319</td></tr><tr><td>2026-11-19</td><td>50.75</td><td>52.70</td><td>49.98</td><td>50.50</td><td>176891749</td></tr><tr><td>2026-11-20</td><td>49.30</td><td>51.50</td><td>48.32</td><td>49.12</td><td>106834525</td></tr><tr><td>2026-11-23</td><td>48.10</td><td>49.56</td><td>46.62</td><td>48.74</td><td>95478871</td></tr><tr><td>2026-11-24</td><td>50.35</td><td>51.10</td><td>48.80</td><td>49.00</td><td>88608057</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_kline_none</b> 成功，1.188 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>无第二来源或未形成可比收盘</li></ul>
+        </article>
+        
+        <article class="card ">
+          <header>
+            <p class="kicker">覆盖 · A · CNY</p>
+            <h3>601899.SH 紫金矿业</h3>
+            <p class="status">已计算区间收益</p>
+          </header>
+          <p>身份、OHLC 与时效通过；区间数字是收盘价计算，不是上涨概率</p>
+          <dl>
+            <dt>简称核验</dt><dd>期望包含「紫金」，观察值「紫金矿业」</dd>
+            <dt>计算序列</dt><dd>baostock_adapter_qfq · BaostockAdapter.fetch_daily · 复权 qfq</dd>
+            <dt>样本</dt><dd>700 根日线，2024-01-02 至 2026-11-24</dd>
+            <dt>最新日线收盘</dt><dd>23.21 CNY，交易日 2026-11-24。这是日线，不是抓取时刻的逐笔价。</dd>
+          </dl>
+          <table>
+            <thead><tr><th>窗口</th><th>收盘到收盘</th><th>区间涨跌</th><th>收盘最大回撤</th><th>年化实现波动</th><th>标签</th></tr></thead>
+            <tbody><tr><td>20 个交易日<br><span class='muted'>2026-10-27 → 2026-11-24</span></td><td>27.85 → 23.21 CNY</td><td>-16.66%</td><td>-21.27%</td><td>43.91%</td><td>计算</td></tr><tr><td>60 个交易日<br><span class='muted'>2026-08-24 → 2026-11-24</span></td><td>34.54 → 23.21 CNY</td><td>-32.80%</td><td>-33.02%</td><td>38.59%</td><td>计算</td></tr><tr><td>120 个交易日<br><span class='muted'>2026-05-29 → 2026-11-24</span></td><td>29.63 → 23.21 CNY</td><td>-21.66%</td><td>-33.71%</td><td>47.59%</td><td>计算</td></tr></tbody>
+          </table>
+          <p>120 个交易日前复权涨跌 -21.66%，不复权 -23.75%。表内使用前复权。两者不同说明区间内有除权，不复权涨跌不是投资者总回报。</p>
+          <h4>近 5 根日线</h4>
+          <table>
+            <thead><tr><th>交易日</th><th>开</th><th>高</th><th>低</th><th>收</th><th>量</th></tr></thead>
+            <tbody><tr><td>2026-11-18</td><td>25.66</td><td>25.66</td><td>24.22</td><td>24.52</td><td>333041647</td></tr><tr><td>2026-11-19</td><td>24.01</td><td>24.03</td><td>23.06</td><td>23.88</td><td>422591394</td></tr><tr><td>2026-11-20</td><td>22.85</td><td>23.91</td><td>22.56</td><td>23.73</td><td>441481379</td></tr><tr><td>2026-11-23</td><td>24.01</td><td>24.36</td><td>23.70</td><td>24.26</td><td>282766653</td></tr><tr><td>2026-11-24</td><td>24.74</td><td>24.76</td><td>23.05</td><td>23.21</td><td>320757253</td></tr></tbody>
+          </table>
+          <h4>各层</h4>
+          <ul><li><b>akshare_provider_qfq</b> 失败，0 秒，同一次准备里，akshare 1.20.45 的 stock_zh_a_hist(002415, 前复权) 抛出 Push2RateLimitError，提示东方财富 push2 断开且不要继续请求。因此没有调用 AkShareProvider 与 EastMoneyProvider。</li><li><b>eastmoney_provider_qfq</b> 失败，0 秒，与 AkShare 东财接口同一供应商。前一次调用已返回限流，按该提示不再调用。</li><li><b>baostock_adapter_qfq</b> 成功，6.241 秒</li><li><b>baostock_adapter_none</b> 成功，6.15 秒</li></ul>
+          <h4>交叉校验</h4>
+          <ul><li>{&quot;left&quot;: &quot;baostock_adapter_qfq&quot;, &quot;right&quot;: &quot;baostock_adapter_none&quot;, &quot;date&quot;: &quot;2026-11-24&quot;, &quot;left_close&quot;: 23.21, &quot;right_close&quot;: 23.21, &quot;rel_diff&quot;: 0.0, &quot;over_1pct&quot;: false}</li></ul>
+        </article>
+        
+  <h2>来源与风险</h2>
+  <ul>
+    <li>A股日线：<code>BaostockAdapter.fetch_daily</code>，前复权与不复权。简称来自 <code>BaostockAdapter.fetch_meta</code>。<code>AkShareProvider</code> 与 <code>EastMoneyProvider</code> 没有产出日线：akshare 1.20.45 的 <code>stock_zh_a_hist</code> 在本次准备中对 002415 返回东方财富 push2 限流，随后按该错误提示停止同类请求。</li>
+    <li>港股日线：<code>backend/scripts/akshare_kline.py</code> 的 <code>_fetch_stock</code>，接口 <code>ak.stock_hk_daily</code>，不复权。没有使用会改写 high/low 的 <code>quanthk_akshare_kline._fetch_stock</code>。公司资料与分红来自 <code>akshare_hk_fundamental.py</code>。</li>
+    <li>公开页面：<a href="https://github.com/qusong0627/QuantMind/blob/1ba0b4d818ab8aa4910b3439f3842a5ba86a0247/backend/services/engine/data_gateway/providers/akshare_provider.py">AkShareProvider</a>，<a href="https://github.com/qusong0627/QuantMind/blob/1ba0b4d818ab8aa4910b3439f3842a5ba86a0247/backend/scripts/akshare_kline.py">akshare_kline.py</a>。</li>
+    <li>数据供应商、接口和复权口径会变化。日线收盘不是投资建议。港股未复权，除净日前后的区间涨跌不能当成投资者总回报。</li>
+  </ul>
+</main>
+</body>
+</html>
